@@ -1,8 +1,10 @@
 import numpy as np
 from forward_algorithm import forward_algorithm
 from backward_algorithm import backward_algorithm
-
 # import pandas as pd
+
+# # Implementation of the Baum-Welch algorithm, an expectation-maximization (EM) algorithm for training Hidden Markov Models (HMMs).
+
 
 # # exemplary data: 
 # init_prob = np.array([0.53, 0.47])                                      # Initial probabilities for the hidden states

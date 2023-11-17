@@ -3,7 +3,7 @@ import numpy as np
 
 # # Implementation of the Metropolis-Hastings algorithm for Bayesian inference of the parameters (mean and standard deviation) of a univariate normal distribution
 
-# the_data = np.array(pd.read_csv('Norm_DataSet2.txt', header=None))
+# the_data = np.array(pd.read_csv('./datasets/Norm_DataSet2.txt', header=None))
 # init_mean = 7.0
 # init_st_dev = 2.0
 

@@ -28,7 +28,7 @@ The Metropolis-Hastings algorithm is a Markov Chain Monte Carlo (MCMC) method us
     The log-likelihood of the current parameters (`old_mean` and `old_std`) given the observed data is computed using the univariate normal distribution:
 
     $$
-    \text{log-likelihood}(\text{data} | \text{mean}, \text{std}) = -\frac{n}{2} \log(2\pi) - \frac{n}{2} \log(\text{std}^2) - \frac{1}{2\text{std}^2} \sum_{i=1}^{n} (x_i - \text{mean})^2
+    \text{log-likelihood} \left( \text{data} | \text{mean}, \text{std} \right) = -\frac{n}{2} \log\left(2\pi\right) - \frac{n}{2} \log\left(\text{std}^2\right) - \frac{1}{2\text{std}^2} \sum_{i=1}^{n} \left(x_i - \text{mean}\right)^2
     $$
 
 
@@ -37,11 +37,11 @@ The Metropolis-Hastings algorithm is a Markov Chain Monte Carlo (MCMC) method us
     New parameters are proposed by sampling from a normal distribution for the mean `new_mean` and adjusting the standard deviation `new_std` by adding a random noise term:
 
     $$
-    \text{{new\_mean}} \sim \mathcal{N}(\text{{old\_mean}}, 2)
+    \text{{new\_mean}} \sim \mathcal{N}\left(\text{{old\_mean}}, 2\right)
     $$
 
     $$
-    \text{{new\_std}} = \text{{old\_std}} + \text{{uniform}}(-0.5, 0.5)
+    \text{{new\_std}} = \text{{old\_std}} + \text{{uniform}}\left(-0.5, 0.5\right)
     $$
 
 - **Acceptance Criterion**
@@ -49,7 +49,7 @@ The Metropolis-Hastings algorithm is a Markov Chain Monte Carlo (MCMC) method us
     The Metropolis acceptance criterion decides whether to accept or reject the proposed parameters based on a stochastic decision process. The acceptance probability $\alpha$ is calculated as the exponential of the difference between the log-likelihoods of the proposed and current parameters:
 
     $$
-    \alpha = \exp(\text{{new\_log}} - \text{{old\_log}})
+     \alpha = \exp\left(\text{{new\_log}} - \text{{old\_log}}\right)
     $$
 
     A random number $u$ from a uniform distribution between 0 and 1 is generated, and if $u < \alpha$, the proposed parameters are accepted.
@@ -121,32 +121,32 @@ The Baum-Welch algorithm is an expectation-maximization (EM) algorithm used for 
 
     The Baum-Welch algorithm consists of two main steps: Expectation (E-step) and Maximization (M-step).
 
-    - **Expectation (E-step)**
-    
-        **Forward Algorithm:** 
-        Calculates the forward probabilities using the given initial probabilities, transition matrix, emission probabilities and the observed sequence.
+- **Expectation (E-step)**
 
-        $$
-        \alpha_{t,i} = \sum_{i=1}^{N}{\alpha_{t-1}(i) a_{ij} b_{i}(o_{t})}
-        $$
+    **Forward Algorithm:** 
+    Calculates the forward probabilities using the given initial probabilities, transition matrix, emission probabilities and the observed sequence.
+
+    $$
+    \alpha_{t,i} = \sum_{i=1}^{N}{\alpha_{t-1}\left(i\right) a_{ij} b_{i}\left(o_{t}\right)}
+    $$
                 
-        **Backward Algorithm:**
-        Calculates the backward probabilities, representing the probabilities of transitioning from each state to the next states at each position in the sequence.
+    **Backward Algorithm:**
+    Calculates the backward probabilities, representing the probabilities of transitioning from each state to the next states at each position in the sequence.
 
-        - Initialization
-        $$
-        \beta_{T(i)} = 1, \quad 1 \leq i \leq N
-        $$
+    - Initialization
+    $$
+    \beta_{T\left(i\right)} = 1, \quad 1 \leq i \leq N
+    $$
 
-        - Recursion
-        $$
-        \beta_{t(i)} = \sum_{j=1}^{N}{a_{ij} b_{j}(o_{t+1}) \beta_{t+1}(j)}
-        $$
+    - Recursion
+    $$
+    \beta_{t\left(i\right)} = \sum_{j=1}^{N}{a_{ij} b_{j}(o_{t+1}) \beta_{t+1}\left(j\right)}
+    $$
 
-        - Termination
-        $$
-        P(o | \lambda) = \sum_{j=1}^{N}{\pi_{j} b_{j}(o_{1}) \beta_{1}(j)}
-        $$
+    - Termination
+    $$
+    P\left(o | \lambda\right) = \sum_{j=1}^{N}{\pi_{j} b_{j}\left(o_{1}\right) \beta_{1}\left(j\right)}
+    $$
 
     - **Maximization (M-step)**
     

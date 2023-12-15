@@ -127,7 +127,7 @@ The Baum-Welch algorithm is an expectation-maximization (EM) algorithm used for 
     Calculates the forward probabilities using the given initial probabilities, transition matrix, emission probabilities and the observed sequence.
 
     $$
-    \alpha_{t,i} = \sum_{i=1}^{N}{\alpha_{t-1}\left(i\right) a_{ij} b_{i}\left(o_{t}\right)}
+    \(\alpha_{t,i} = \sum_{i=1}^{N}\alpha_{t-1}(i) a_{ij} b_{i}(o_{t})\)
     $$
                 
     **Backward Algorithm:**
